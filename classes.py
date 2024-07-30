@@ -45,9 +45,8 @@ people = ["Harry", "Sheyi", "Kayode", "Daniel"]
 
 # Try to add each person to the flight
 for person in people:
-    people.sort()  # i think there's something missing here
-    success = flight.add_passenger(person)
-    if success:
+    people.sort()
+    if flight.add_passenger(person):
         print(f"Added {person} to flight successfully")
     else:
         print(f"No available seat for {person}")
