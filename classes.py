@@ -50,3 +50,14 @@ for person in people:
         print(f"Added {person} to flight successfully")
     else:
         print(f"No available seat for {person}")
+
+
+class Room:
+    def __init__(self, roomno, duration):
+        self.roomno = roomno
+        self.duration = duration
+        self.guest=[]
+        self.booking=[]
+
+        def add_guest_to_room(self,guest,boking):
+            
