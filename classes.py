@@ -37,27 +37,76 @@ class Flight:
 
 
 # Create an instance of Flight with a capacity of 3
-flight = Flight(3)
+flight = Flight(5)
 
 # List of people to be added to the flight
 people = ["Harry", "Sheyi", "Kayode", "Daniel"]
 
-
+people.sort()
 # Try to add each person to the flight
 for person in people:
-    people.sort()
+
     if flight.add_passenger(person):
-        print(f"Added {person} to flight successfully")
+        print(f"Added {person} to flight successfully. \n")
     else:
-        print(f"No available seat for {person}")
+        print(f"No available seat for {person} ! \n")
+
+
+# class Room:
+#     def __init__(self, roomno, duration):
+#         self.roomno = roomno
+#         self.duration = duration
+#         self.guest=[]
+
+
+#         def add_guest_to_room(self,guest):
+
+#         def check_availability(self):
+#             self.guest=guest
+#             self.
+#             return True
 
 
 class Room:
-    def __init__(self, roomno, duration):
+    def __init__(self, roomno, max_duration):
         self.roomno = roomno
-        self.duration = duration
-        self.guest=[]
-        self.booking=[]
+        self.max_duration = max_duration
+        self.guest = []
 
-        def add_guest_to_room(self,guest,boking):
-            
+    def add_guest_to_room(self, guest, stay_duration):
+        if self.check_availability(stay_duration):
+            self.guest.append({"name": guest, "stay_duration": stay_duration})
+            return True
+        else:
+            return False
+
+    def check_availability(self, stay_duration):
+        # Check if the room is available for the requested stay duration
+        if len(self.guest) == 0:
+            return stay_duration <= self.max_duration
+        return False
+
+    def current_guest(self):
+        if len(self.guest) > 0:
+            return self.guest[0]
+        else:
+            return None
+
+
+# Example usage:
+room101 = Room(101, 5)  # Room 101 with a maximum stay duration of 5 days
+
+# Check if the room is available and add a guest if it is
+if room101.add_guest_to_room("John Doe", 3):
+    print(f"Guest added: {room101.guest}")
+else:
+    print("Room is not available.")
+
+# Try to add another guest
+if room101.add_guest_to_room("Jane Smith", 2):
+    print(f"Guest added: {room101.guest}")
+else:
+    print("Room is not available.")
+
+# Output the current guest list
+print(f"Current guests in room {room101.roomno}: {room101.guest}")
