@@ -70,6 +70,7 @@ for person in people:
 class Room:
     def __init__(self, roomno, max_duration):
         self.roomno = roomno
+
         self.max_duration = max_duration
         self.guest = []
 
@@ -94,13 +95,13 @@ class Room:
 
 
 # Example usage:
-room101 = Room(101, 5)  # Room 101 with a maximum stay duration of 5 days
+room101 = Room(101, 6)  # Room 101 with a maximum stay duration of 5 days
 
 # Check if the room is available and add a guest if it is
 if room101.add_guest_to_room("John Doe", 3):
-    print(f"Guest added: {room101.guest}")
+    print(f"Guest added: {room101.guest} \n")
 else:
-    print("Room is not available.")
+    print("Room is not available. \n")
 
 # Try to add another guest
 if room101.add_guest_to_room("Jane Smith", 2):
@@ -110,3 +111,25 @@ else:
 
 # Output the current guest list
 print(f"Current guests in room {room101.roomno}: {room101.guest}")
+
+
+class Bible:
+    def __init__(self, name, testament, book, chapter, verse):
+        self.name = name
+        self.testament = testament
+        self.book = book
+        self.chapter = chapter
+        self.verse = verse
+
+    def set_book(self, name, chapter, verse):
+        self.book = name
+        self.chapter = chapter
+        self.verse = verse
+        return self
+
+
+# Usage
+bible = Bible("NKJV", "Old Testament", "Exodus", 5, 1)
+print(
+    f"We are reading the book of {bible.book} today! Chapter {bible.chapter}, Verse {bible.verse} ~ {bible.name}. \n"
+)
